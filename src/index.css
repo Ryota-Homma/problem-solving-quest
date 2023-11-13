@@ -1,6 +1,29 @@
 @import "reset.css";
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Outfit&display=swap");
 
-body {
+html,
+body,
+#root {
   font-family: "M PLUS 1p", "Outfit", sans-serif;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: #1f2c5c;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+}
+
+#root {
+  position: relative;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  width: auto;
 }

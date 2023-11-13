@@ -1,7 +1,11 @@
-import "./App.module.scss";
+import BgImage from "./components/bgImage/BgImage";
 
-const App = () => {
-  return <></>;
+const App: React.FC = () => {
+  return (
+    <>
+      <BgImage />
+    </>
+  );
 };
 
 export default App;
