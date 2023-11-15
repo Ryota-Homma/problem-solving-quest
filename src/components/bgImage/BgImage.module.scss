@@ -6,56 +6,63 @@
   height: 100%;
   width: 100%;
   z-index: -1;
-}
 
-.bgItem {
-  position: absolute;
-  animation: rotate1 150s linear 0s infinite;
+  &__item {
+    position: absolute;
+    animation: rotate1 150s linear 0s infinite;
 
-  & > {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    width: auto;
-  }
+    & > {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      width: auto;
+    }
 
-  &01 {
-    width: 42.8125rem;
-    top: -12.5rem;
-    left: -12.2rem;
-  }
+    &-01 {
+      width: 545rem;
+      height: 481rem;
+      top: -160rem;
+      left: -166rem;
+    }
 
-  &02 {
-    width: 31.6875rem;
-    bottom: -9.5rem;
-    left: -6.6rem;
-  }
+    &-02 {
+      width: 507rem;
+      height: 489rem;
+      bottom: -152rem;
+      left: -108rem;
+    }
 
-  &03 {
-    width: 21.125rem;
-    top: -1.8rem;
-    right: 25.3rem;
-  }
+    &-03 {
+      width: 338rem;
+      height: 332rem;
+      top: -30rem;
+      right: 405rem;
+    }
 
-  &04 {
-    width: 22.8125rem;
-    top: -5.7rem;
-    right: -1.7rem;
-    animation: rotate1 150s linear 0s infinite reverse;
-  }
+    &-04 {
+      width: 365rem;
+      height: 410rem;
+      top: -92rem;
+      right: -28rem;
+    }
 
-  &05 {
-    width: 26.625rem;
-    top: 12rem;
-    right: -17rem;
-    animation: rotate1 150s linear 0s infinite reverse;
-  }
+    &-05 {
+      width: 426rem;
+      height: 415rem;
+      top: 193rem;
+      right: -273rem;
+    }
 
-  &06 {
-    width: 35.125rem;
-    bottom: -16rem;
-    right: -9.9rem;
-    animation: rotate1 150s linear 0s infinite reverse;
+    &-06 {
+      width: 562rem;
+      height: 564rem;
+      bottom: -255rem;
+      right: -158rem;
+    }
+
+    &-animationReverse {
+      animation: rotate1 150s linear 0s infinite reverse;
+    }
   }
 }
 
