@@ -1,0 +1,29 @@
+.titleWrap {
+  width: 264rem;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 7.3rem 0 7.3rem 11.6rem;
+  border-radius: 0rem 30rem 30rem 0rem;
+}
+
+.svg {
+  width: 29.45rem;
+  height: 29.45rem;
+  margin-right: 9rem;
+
+  & > svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+  }
+}
+
+.text {
+  font-family: "M PLUS 1p ExtraBold";
+  color: #1f2c5c;
+  font-size: 23rem;
+  letter-spacing: 1.5rem;
+}
