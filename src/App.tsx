@@ -1,9 +1,11 @@
-import {useCallback, useEffect} from "react";
+import {useCallback, useEffect, useState} from "react";
 import BgImage from "./components/bgImage/BgImage";
 import Title from "./components/title/Title";
 import Layout from "./components/layout/Layout";
 
 const App: React.FC = () => {
+  const [isFontSet, setIsFontSet] = useState(false);
+
   const fontSet = useCallback(() => {
     const width = window.innerWidth;
     const height = window.innerHeight;
@@ -30,16 +32,19 @@ const App: React.FC = () => {
     };
   }, [fontSet]);
 
-  return (
+  useEffect(() => {
+    setIsFontSet(true);
+  }, []);
+
+  return isFontSet ? (
     <>
       <BgImage />
 
       <Layout>
         <Title />
-        <p>test</p>
       </Layout>
     </>
-  );
+  ) : null;
 };
 
 export default App;
