@@ -1,7 +1,7 @@
 import {useEffect} from "react";
-import s from "./App.module.scss";
 import BgImage from "./components/bgImage/BgImage";
 import Title from "./components/title/Title";
+import Layout from "./components/layout/Layout";
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -23,17 +23,22 @@ const App: React.FC = () => {
 
     if (ratio > 1.6) {
       htmlElement.style.fontSize = Math.floor((1 / width) * 1000000) / 10000 + "vw";
-    } else if (ratio < 1.6) {
+    }
+    if (ratio <= 1.6) {
       htmlElement.style.fontSize =
         Math.floor((1 / (height * 0.016)) * 10000) / 10000 + "vw";
     }
   };
 
   return (
-    <div className={s.wrap}>
+    <>
       <BgImage />
-      <Title />
-    </div>
+
+      <Layout>
+        <Title />
+        <p>test</p>
+      </Layout>
+    </>
   );
 };
 
