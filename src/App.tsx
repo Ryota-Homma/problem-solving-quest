@@ -2,6 +2,7 @@ import {useCallback, useEffect, useState} from "react";
 import BgImage from "./components/bgImage/BgImage";
 import Title from "./components/title/Title";
 import Layout from "./components/layout/Layout";
+import CardArea from "./components/cardArea/CardArea";
 
 const App: React.FC = () => {
   const [isFontSet, setIsFontSet] = useState(false);
@@ -42,6 +43,7 @@ const App: React.FC = () => {
 
       <Layout>
         <Title />
+        <CardArea />
       </Layout>
     </>
   ) : null;
