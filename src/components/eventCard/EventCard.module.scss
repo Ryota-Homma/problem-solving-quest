@@ -1,0 +1,56 @@
+.wrap {
+  width: 212rem;
+  height: 324rem;
+  border-radius: 15rem;
+  background-color: #ffffff;
+  color: #1f2c5c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 27rem 20rem;
+  box-sizing: border-box;
+  background-image: url("/assets//card/eventCard-bg.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  // カードがめくれるようなアニメーション仮
+  // transform-style: preserve-3d;
+  // transition: 1s;
+  // &:hover {
+  //   transform: rotateY(180deg);
+  // }
+}
+
+.title {
+  position: relative;
+  font-family: "Outfit Thin";
+  display: inline-block;
+  width: 74rem;
+  height: 74rem;
+  line-height: 74rem;
+  text-align: center;
+  color: #fff;
+  font-size: 41rem;
+  background-color: #1f2c5c;
+  border-radius: 50%;
+  margin-bottom: 32rem;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: -20rem;
+    left: 50%;
+    border: 12rem solid transparent;
+    border-top: 15rem solid #1f2c5c;
+    transform: translateX(-50%);
+  }
+}
+
+.text {
+  font-family: "M PLUS 1p ExtraBold";
+  font-size: 16rem;
+  line-height: 27rem;
+  text-align: center;
+}
