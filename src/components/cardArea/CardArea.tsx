@@ -1,10 +1,18 @@
 import s from "./CardArea.module.scss";
 
-const CardArea: React.FC = () => {
+type Props = {
+  children: React.ReactNode[];
+};
+
+const CardArea: React.FC<Props> = (prop) => {
   return (
     <div className={s["container"]}>
-      <div className={s["container__event"]}>{/* event card area */}</div>
-      <div>{/* item card area */}</div>
+      <div className={s["container__event"]}>
+        <div className={s["container__warp"]}>{/* event card area */}</div>
+      </div>
+      <div>
+        <div className={s["container__warp"]}>{/* item card area */}</div>
+      </div>
     </div>
   );
 };

@@ -24,4 +24,14 @@
       height: 100%;
     }
   }
+
+  &__warp {
+    height: 100%;
+    box-sizing: border-box;
+    padding: 71rem 52.5rem 60rem 52.5rem;
+    display: flex;
+    gap: 42rem;
+    flex-direction: column;
+    align-items: center;
+  }
 }
