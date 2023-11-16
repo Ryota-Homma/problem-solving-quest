@@ -1,0 +1,22 @@
+.button {
+  border: none;
+  outline: none;
+  font-family: "Outfit Thin";
+  font-size: 26rem;
+  color: #ffffff;
+  width: 281rem;
+  height: 66rem;
+  padding: 0 100rem 0 90rem;
+  border-radius: 31rem;
+  background-color: #e6002d;
+  position: relative;
+  border-top: 5rem solid #ff5778;
+  border-bottom: 5rem solid #a70021;
+  cursor: pointer;
+
+  &:active {
+    background-color: #a70021;
+    border-top: 5rem solid #a70021;
+    border-bottom: 5rem solid #a70021;
+  }
+}
