@@ -3,6 +3,11 @@ import BgImage from "./components/bgImage/BgImage";
 import Title from "./components/title/Title";
 import Layout from "./components/layout/Layout";
 import CardArea from "./components/cardArea/CardArea";
+import EventCard from "./components/eventCard/EventCard";
+import ItemCard from "./components/itemCard/ItemCard";
+import {events} from "./data/events";
+import {items} from "./data/items";
+import Button from "./components/button/Button";
 
 const App: React.FC = () => {
   const [isFontSet, setIsFontSet] = useState(false);
@@ -37,13 +42,27 @@ const App: React.FC = () => {
     setIsFontSet(true);
   }, []);
 
+  const divStyle = {
+    display: "flex",
+    gap: "24px",
+  };
+
   return isFontSet ? (
     <>
       <BgImage />
 
       <Layout>
         <Title />
-        <CardArea />
+        <CardArea>
+          <EventCard major={events[0].major} situation={events[0].situation} />
+          <Button onClick={() => console.log(1)} />
+          <div style={divStyle}>
+            {items.map((item) => (
+              <ItemCard key={item.item} item={item.item} img={item.img} />
+            ))}
+          </div>
+          <Button onClick={() => console.log(1)} />
+        </CardArea>
       </Layout>
     </>
   ) : null;
