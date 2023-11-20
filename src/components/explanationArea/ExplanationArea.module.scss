@@ -1,0 +1,63 @@
+.container {
+  color: #fff;
+  margin: 50rem 0 14rem;
+  display: grid;
+  grid-template-columns: 19.7% auto;
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 11rem;
+  grid-row-gap: 5rem;
+  width: 630rem;
+
+  &__heading {
+    display: inline-block;
+    font-size: 16rem;
+
+    &::before {
+      content: "";
+      background-color: #fff;
+      color: #1f2c5c;
+      width: 21rem;
+      height: 21rem;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 4rem;
+      line-height: 21rem;
+      text-align: center;
+      font-size: 13rem;
+      font-weight: 900;
+    }
+
+    &-m {
+      &::before {
+        content: "M";
+      }
+    }
+
+    &-a {
+      &::before {
+        content: "A";
+      }
+    }
+    &-j {
+      &::before {
+        content: "J";
+      }
+    }
+    &-o {
+      &::before {
+        content: "O";
+      }
+    }
+    &-r {
+      &::before {
+        content: "R";
+      }
+    }
+  }
+
+  &__text {
+    display: inline-block;
+    font-size: 13rem;
+    font-family: "M PLUS 1p Medium";
+  }
+}

@@ -1,8 +1,9 @@
-import {useCallback, useEffect, useState} from "react";
+import { useCallback, useEffect, useState } from "react";
 import BgImage from "./components/bgImage/BgImage";
 import Title from "./components/title/Title";
 import Layout from "./components/layout/Layout";
 import CardArea from "./components/cardArea/CardArea";
+import ExplanationArea from "./components/explanationArea/ExplanationArea";
 
 const App: React.FC = () => {
   const [isFontSet, setIsFontSet] = useState(false);
@@ -14,7 +15,8 @@ const App: React.FC = () => {
     const htmlElement = document.querySelector("html")!;
 
     if (ratio > 1.6) {
-      htmlElement.style.fontSize = Math.floor((1 / width) * 1000000) / 10000 + "vw";
+      htmlElement.style.fontSize =
+        Math.floor((1 / width) * 1000000) / 10000 + "vw";
     }
     if (ratio <= 1.6) {
       htmlElement.style.fontSize =
@@ -43,6 +45,7 @@ const App: React.FC = () => {
 
       <Layout>
         <Title />
+        <ExplanationArea />
         <CardArea />
       </Layout>
     </>
