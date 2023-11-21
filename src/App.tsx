@@ -1,18 +1,17 @@
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useEffect} from "react";
 import BgImage from "./components/bgImage/BgImage";
 import Title from "./components/title/Title";
 import Layout from "./components/layout/Layout";
 import CardArea from "./components/cardArea/CardArea";
+import ItemCardArea from "./features/itemCardArea/ItemCardArea";
+import EventCardArea from "./features/eventCardArea/EventCardArea";
 
 const App: React.FC = () => {
-  const [isFontSet, setIsFontSet] = useState(false);
-
   const fontSet = useCallback(() => {
     const width = window.innerWidth;
     const height = window.innerHeight;
     const ratio = width / height;
     const htmlElement = document.querySelector("html")!;
-
     if (ratio > 1.6) {
       htmlElement.style.fontSize = Math.floor((1 / width) * 1000000) / 10000 + "vw";
     }
@@ -25,7 +24,6 @@ const App: React.FC = () => {
   useEffect(() => {
     window.addEventListener("resize", fontSet);
     window.addEventListener("load", fontSet);
-
     // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("resize", fontSet);
@@ -33,20 +31,19 @@ const App: React.FC = () => {
     };
   }, [fontSet]);
 
-  useEffect(() => {
-    setIsFontSet(true);
-  }, []);
-
-  return isFontSet ? (
+  return (
     <>
       <BgImage />
 
       <Layout>
         <Title />
-        <CardArea />
+        <CardArea>
+          <EventCardArea />
+          <ItemCardArea />
+        </CardArea>
       </Layout>
     </>
-  ) : null;
+  );
 };
 
 export default App;
