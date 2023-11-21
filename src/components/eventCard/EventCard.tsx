@@ -7,6 +7,7 @@ type Props = {
 
 const EventCard: React.FC<Props> = (props) => {
   const {major, situation} = props;
+
   return (
     <div className={s["wrap"]}>
       <p className={s["title"]}>{major}</p>

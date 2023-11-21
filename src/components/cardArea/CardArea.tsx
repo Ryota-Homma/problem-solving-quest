@@ -11,15 +11,10 @@ const CardArea: React.FC<Props> = ({children}) => {
         <div className={s["container__warp"]}>
           {children[0]}
           {children[1]}
-          {/* event card area */}
         </div>
       </div>
       <div>
-        <div className={s["container__warp"]}>
-          {children[2]}
-          {children[3]}
-          {/* item card area */}
-        </div>
+        <div className={s["container__warp"]}>{children[2]}</div>
       </div>
     </div>
   );

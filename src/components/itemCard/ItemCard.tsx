@@ -1,13 +1,15 @@
 import {useEffect, useRef, useState} from "react";
 import s from "./ItemCard.module.scss";
+import "./ItemCard.css";
 
 type Props = {
   item: string;
   img: string;
+  onClick: () => void;
 };
 
 const ItemCard: React.FC<Props> = (props) => {
-  const {item, img} = props;
+  const {item, img, onClick} = props;
 
   const [isAnimated, setIsAnimated] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -35,7 +37,7 @@ const ItemCard: React.FC<Props> = (props) => {
     <div className={s["wrap"]}>
       <span className={s["deleteButton"]} onClick={handleClick}></span>
       <div
-        className={`${s["cardContainer"]} ${isAnimated ? s["active"] : ""}`}
+        className={`${s["cardContainer"]} ${isAnimated ? "active" : ""}`}
         ref={cardRef}
       >
         <div className={s["card"]}>
