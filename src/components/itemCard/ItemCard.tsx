@@ -10,36 +10,20 @@ type Props = {
 
 const ItemCard: React.FC<Props> = (props) => {
   const {item, img, onClick} = props;
-
-  const [isAnimated, setIsAnimated] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleClick = () => {
-    setIsAnimated(true);
-  };
-
-  useEffect(() => {
     const cardElement = cardRef.current!;
-
-    if (!cardElement) return;
-    const handleAnimationEnd = () => {
-      setIsAnimated(false);
-    };
-
-    cardElement.addEventListener("animationend", handleAnimationEnd);
-
-    return () => {
-      cardElement.removeEventListener("animationend", handleAnimationEnd);
-    };
-  }, []);
+    if (cardRef.current) {
+      cardRef.current.classList.add("active");
+    }
+    cardElement.addEventListener("animationend", onClick);
+  };
 
   return (
     <div className={s["wrap"]}>
       <span className={s["deleteButton"]} onClick={handleClick}></span>
-      <div
-        className={`${s["cardContainer"]} ${isAnimated ? "active" : ""}`}
-        ref={cardRef}
-      >
+      <div className={s["cardContainer"]} ref={cardRef}>
         <div className={s["card"]}>
           <p className={s["card__img"]}>
             <img src={img} />
