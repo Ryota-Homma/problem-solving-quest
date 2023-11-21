@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {RefObject, createRef, useEffect, useRef, useState} from "react";
 import Button from "../../components/button/Button";
 import ItemCard from "../../components/itemCard/ItemCard";
 import {items} from "../../data/items";
@@ -24,26 +24,35 @@ const ItemCardArea: React.FC = () => {
 
   // アイテムを削除する関数
   const deleteItem = (item: DisplayedItems, index: number) => {
-    // 選ばれてない配列
     const newArray = _.differenceBy(excludedItems, displayedItems, "item");
-    // // newArrayの中からランダムで1つ選ぶ
     const newItem = _.sampleSize(newArray, 1);
-    // // 今回選ばれたアイテムを削除
     const newExcludedItems = _.differenceBy(newArray, newItem, "item");
     if (newExcludedItems.length === 0) return alert("アイテムがなくなりました");
-    // 選んだアイテムと新しいアイテムを入れ替える
     const updatedCards = _.cloneDeep(displayedItems);
     updatedCards[index] = newItem[0];
-    // stateを更新
     setDisplayedItems(updatedCards);
     setExcludedItems(newExcludedItems);
   };
 
+  // シャッフルする関数
   const shuffle = () => {
     const newArray = _.differenceBy(excludedItems, displayedItems, "item");
     const newItem = _.sampleSize(newArray, 3);
-    setDisplayedItems(newItem);
+    const newExcludedItems = _.differenceBy(newArray, newItem, "item");
+    if (newArray.length === 0) return alert("アイテムがなくなりました");
+    cardRef.current.forEach((card) => {
+      card.current?.classList.add("active");
+      card.current?.addEventListener("animationend", () => {
+        setDisplayedItems(newItem);
+        setExcludedItems(newExcludedItems);
+      });
+    });
   };
+
+  const cardRef = useRef<RefObject<HTMLInputElement>[]>([]);
+  displayedItems.forEach((_, index) => {
+    cardRef.current[index] = createRef<HTMLInputElement>();
+  });
 
   return (
     <>
@@ -54,6 +63,7 @@ const ItemCardArea: React.FC = () => {
             item={item.item}
             img={item.img}
             onClick={() => deleteItem(item, index)}
+            cardRefs={cardRef.current[index]}
           />
         ))}
       </div>

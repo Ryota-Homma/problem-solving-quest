@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from "react";
+import {forwardRef} from "react";
 import s from "./ItemCard.module.scss";
 import "./ItemCard.css";
 
@@ -6,18 +6,16 @@ type Props = {
   item: string;
   img: string;
   onClick: () => void;
+  cardRefs: React.RefObject<HTMLDivElement>;
 };
 
-const ItemCard: React.FC<Props> = (props) => {
-  const {item, img, onClick} = props;
-  const cardRef = useRef<HTMLDivElement>(null);
+const ItemCard: React.FC<Props> = forwardRef((props) => {
+  const {item, img, onClick, cardRefs} = props;
+  const cardRef = cardRefs as React.MutableRefObject<HTMLInputElement>;
 
   const handleClick = () => {
-    const cardElement = cardRef.current!;
-    if (cardRef.current) {
-      cardRef.current.classList.add("active");
-    }
-    cardElement.addEventListener("animationend", onClick);
+    if (cardRef.current!) cardRef.current.classList.add("active");
+    cardRef.current.addEventListener("animationend", onClick);
   };
 
   return (
@@ -36,6 +34,6 @@ const ItemCard: React.FC<Props> = (props) => {
       </div>
     </div>
   );
-};
+});
 
 export default ItemCard;
