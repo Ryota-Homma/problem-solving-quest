@@ -3,10 +3,8 @@ import BgImage from "./components/bgImage/BgImage";
 import Title from "./components/title/Title";
 import Layout from "./components/layout/Layout";
 import CardArea from "./components/cardArea/CardArea";
-import EventCard from "./components/eventCard/EventCard";
-import {events} from "./data/events";
-import Button from "./components/button/Button";
 import ItemCardArea from "./features/itemCardArea/ItemCardArea";
+import EventCardArea from "./features/eventCardArea/EventCardArea";
 
 const App: React.FC = () => {
   const fontSet = useCallback(() => {
@@ -40,9 +38,7 @@ const App: React.FC = () => {
       <Layout>
         <Title />
         <CardArea>
-          <EventCard major={events[0].major} situation={events[0].situation} />
-          <Button onClick={() => console.log(1)} />
-
+          <EventCardArea />
           <ItemCardArea />
         </CardArea>
       </Layout>

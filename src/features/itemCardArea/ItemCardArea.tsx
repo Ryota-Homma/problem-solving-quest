@@ -41,8 +41,9 @@ const ItemCardArea: React.FC = () => {
     const newExcludedItems = _.differenceBy(newArray, newItem, "item");
     if (newArray.length === 0) return alert("アイテムがなくなりました");
     cardRef.current.forEach((card) => {
-      card.current?.classList.add("active");
-      card.current?.addEventListener("animationend", () => {
+      if (!card.current) return;
+      card.current.classList.add("active");
+      card.current.addEventListener("animationend", () => {
         setDisplayedItems(newItem);
         setExcludedItems(newExcludedItems);
       });
