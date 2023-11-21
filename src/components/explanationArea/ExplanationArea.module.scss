@@ -6,6 +6,7 @@
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 11rem;
   grid-row-gap: 5rem;
+  align-items: center;
   width: 630rem;
 
   &__heading {
