@@ -11,13 +11,6 @@
     position: absolute;
     animation: rotate1 150s linear 0s infinite;
 
-    & > {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      width: auto;
-    }
-
     &-01 {
       width: 545rem;
       height: 481rem;
