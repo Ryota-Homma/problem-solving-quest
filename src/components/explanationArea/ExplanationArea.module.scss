@@ -1,17 +1,22 @@
 .container {
   color: #fff;
-  margin: 50rem 0 14rem;
-  display: grid;
-  grid-template-columns: 19.7% auto;
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 11rem;
-  grid-row-gap: 5rem;
-  align-items: center;
-  width: 630rem;
+  margin: 42rem 0 14rem;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 11rem;
+
+    &:not(:last-child) {
+      margin-bottom: 5rem;
+    }
+  }
 
   &__heading {
     display: inline-block;
     font-size: 16rem;
+    font-family: "Outfit Thin";
+    width: 114rem;
 
     &::before {
       content: "";
@@ -26,6 +31,7 @@
       text-align: center;
       font-size: 13rem;
       font-weight: 900;
+      font-family: "M PLUS 1p", "Outfit", sans-serif;
     }
 
     &-m {
