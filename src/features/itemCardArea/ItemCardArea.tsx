@@ -64,7 +64,7 @@ const ItemCardArea: React.FC = () => {
             item={item.item}
             img={item.img}
             onClick={() => deleteItem(item, index)}
-            cardRefs={cardRef.current[index]}
+            ref={cardRef.current[index]}
           />
         ))}
       </div>

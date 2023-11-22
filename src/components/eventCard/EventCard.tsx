@@ -5,16 +5,15 @@ import "./EventCard.css";
 type Props = {
   major: string;
   situation: string;
-  cardRef: React.RefObject<HTMLDivElement>;
 };
 
-const EventCard: React.FC<Props> = forwardRef((props) => {
-  const {major, situation, cardRef} = props;
+const EventCard = forwardRef<HTMLDivElement, Props>((props, ref) => {
+  const {major, situation} = props;
 
   return (
     <>
       <div className={s["wrap"]}>
-        <div className={s["cardContainer"]} ref={cardRef}>
+        <div className={s["cardContainer"]} ref={ref}>
           <div className={s["card"]}>
             <p className={s["card__title"]}>{major}</p>
             <p className={s["card__text"]}>{situation}</p>

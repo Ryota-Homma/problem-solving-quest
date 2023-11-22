@@ -39,7 +39,7 @@ const EventCardArea = () => {
     <>
       {displayedItems.map((item) => (
         <div key={item.situation} className={s["wrap"]}>
-          <EventCard major={item.major} situation={item.situation} cardRef={cardRef} />
+          <EventCard major={item.major} situation={item.situation} ref={cardRef} />
           <Button onClick={shuffle} />
         </div>
       ))}
