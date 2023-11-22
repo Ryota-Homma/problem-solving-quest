@@ -1,0 +1,70 @@
+.container {
+  color: #fff;
+  margin: 42rem 0 14rem;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 11rem;
+
+    &:not(:last-child) {
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__heading {
+    display: inline-block;
+    font-size: 16rem;
+    font-family: "Outfit Thin";
+    width: 114rem;
+
+    &::before {
+      content: "";
+      background-color: #fff;
+      color: #1f2c5c;
+      width: 21rem;
+      height: 21rem;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 4rem;
+      line-height: 21rem;
+      text-align: center;
+      font-size: 13rem;
+      font-weight: 900;
+      font-family: "M PLUS 1p", "Outfit", sans-serif;
+    }
+
+    &-m {
+      &::before {
+        content: "M";
+      }
+    }
+
+    &-a {
+      &::before {
+        content: "A";
+      }
+    }
+    &-j {
+      &::before {
+        content: "J";
+      }
+    }
+    &-o {
+      &::before {
+        content: "O";
+      }
+    }
+    &-r {
+      &::before {
+        content: "R";
+      }
+    }
+  }
+
+  &__text {
+    display: inline-block;
+    font-size: 13rem;
+    font-family: "M PLUS 1p Medium";
+  }
+}

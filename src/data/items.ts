@@ -11,16 +11,4 @@ export const items = [
     item: "トレーニングマシン",
     img: "/assets/items/training-machine.svg",
   },
-  {
-    item: "フットサル",
-    img: "/assets/items/futsal.svg",
-  },
-  {
-    item: "ご飯",
-    img: "/assets/items/meal.svg",
-  },
-  {
-    item: "パソコン",
-    img: "/assets/items/pc.svg",
-  },
 ];

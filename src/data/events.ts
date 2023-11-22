@@ -19,4 +19,8 @@ export const events = [
     major: "M",
     situation: "社内に必要なスキルを持ってる社員がいない",
   },
+  {
+    major: "M",
+    situation: "チーム目標が何もないチームだった",
+  },
 ];
