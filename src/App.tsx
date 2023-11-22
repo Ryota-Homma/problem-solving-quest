@@ -1,7 +1,8 @@
-import {useCallback, useEffect} from "react";
+import { useCallback, useEffect } from "react";
 import BgImage from "./components/bgImage/BgImage";
 import Title from "./components/title/Title";
 import Layout from "./components/layout/Layout";
+import ExplanationArea from "./components/explanationArea/ExplanationArea";
 import CardArea from "./components/cardArea/CardArea";
 import ItemCardArea from "./features/itemCardArea/ItemCardArea";
 import EventCardArea from "./features/eventCardArea/EventCardArea";
@@ -13,7 +14,8 @@ const App: React.FC = () => {
     const ratio = width / height;
     const htmlElement = document.querySelector("html")!;
     if (ratio > 1.6) {
-      htmlElement.style.fontSize = Math.floor((1 / width) * 1000000) / 10000 + "vw";
+      htmlElement.style.fontSize =
+        Math.floor((1 / width) * 1000000) / 10000 + "vw";
     }
     if (ratio <= 1.6) {
       htmlElement.style.fontSize =
@@ -37,6 +39,7 @@ const App: React.FC = () => {
 
       <Layout>
         <Title />
+        <ExplanationArea />
         <CardArea>
           <EventCardArea />
           <ItemCardArea />
