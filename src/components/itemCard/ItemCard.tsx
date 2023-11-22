@@ -8,7 +8,7 @@ type Props = {
   onClick: () => void;
 };
 
-const ItemCard = forwardRef<HTMLDivElement, Props>((props, ref) => {
+const ItemCard = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const {item, img, onClick} = props;
   const cardRef = ref as React.MutableRefObject<HTMLInputElement>;
 
