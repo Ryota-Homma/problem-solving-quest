@@ -1,8 +1,8 @@
-import {useLayoutEffect} from "react";
+import { useLayoutEffect } from "react";
 import BgImage from "./components/bgImage/BgImage";
 import Title from "./components/title/Title";
 import Layout from "./components/layout/Layout";
-import ExplanationArea from "./components/explanationArea/ExplanationArea";
+import TopArea from "./components/topArea/TopArea";
 import CardArea from "./components/cardArea/CardArea";
 import ItemCardArea from "./features/itemCardArea/ItemCardArea";
 import EventCardArea from "./features/eventCardArea/EventCardArea";
@@ -21,7 +21,7 @@ const App: React.FC = () => {
 
       <Layout>
         <Title />
-        <ExplanationArea />
+        <TopArea />
         <CardArea>
           <EventCardArea />
           <ItemCardArea />
