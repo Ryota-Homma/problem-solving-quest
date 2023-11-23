@@ -17,18 +17,19 @@ const useEventCard = (): [EventCardState[], CardRef] => {
   const [deck, setDeck] = useState<EventCardState[]>(events);
   const [displayedCards, setDisplayedCards] = useState<EventCardState[] | []>([]);
 
-  useEffect(() => {
-    const shuffledArray = sampleSize(deck, 1);
-    setDisplayedCards(shuffledArray);
-  }, [deck]);
-
   const cardRef = useRef<HTMLDivElement>(null);
   const shuffle = () => {
-    const newArray = differenceBy(deck, displayedCards, "situation");
-    if (!newArray.length) return alert("イベントカードがなくなりました");
+    const newDeck = differenceBy(deck, displayedCards, "situation");
+    if (!newDeck.length) return alert("イベントカードがなくなりました");
     if (cardRef.current!) cardRef.current.classList.add("active");
-    cardRef.current!.addEventListener("animationend", () => setDeck(newArray));
+    cardRef.current!.addEventListener("animationend", () => setDeck(newDeck));
   };
+
+  useEffect(() => {
+    const shuffledCard = sampleSize(deck, 1);
+    setDisplayedCards(shuffledCard);
+  }, [deck]);
+
   return [displayedCards, {cardRef, shuffle}];
 };
 
