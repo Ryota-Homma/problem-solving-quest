@@ -1,8 +1,6 @@
 import {useCallback, useEffect} from "react";
 
-type FontSet = () => void;
-
-const useFontSet = (): FontSet => {
+const useFontSet = (): (() => void) => {
   const fontSet = useCallback(() => {
     const width = window.innerWidth;
     const height = window.innerHeight;
