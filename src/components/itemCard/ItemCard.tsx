@@ -6,12 +6,11 @@ type Props = {
   item: string;
   img: string;
   onClick: () => void;
-  cardRefs: React.RefObject<HTMLDivElement>;
 };
 
-const ItemCard: React.FC<Props> = forwardRef((props) => {
-  const {item, img, onClick, cardRefs} = props;
-  const cardRef = cardRefs as React.MutableRefObject<HTMLInputElement>;
+const ItemCard = forwardRef<HTMLInputElement, Props>((props, ref) => {
+  const {item, img, onClick} = props;
+  const cardRef = ref as React.MutableRefObject<HTMLInputElement>;
 
   const handleClick = () => {
     if (cardRef.current!) cardRef.current.classList.add("active");
