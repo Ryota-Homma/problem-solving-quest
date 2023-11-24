@@ -17,23 +17,26 @@ const App: React.FC = () => {
 
   return (
     <>
-      {/* <BgImage />
+      <div>
+        <BgImage />
+      </div>
 
-      <Layout>
-        <Title />
-        <TopArea />
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <CardArea>
-          <EventCardArea />
-          <ItemCardArea />
-        </CardArea>
-      </Layout> */}
+      <div>
+        <Layout>
+          <div>
+            <Title />
+          </div>
+          <div>
+            <TopArea />
+          </div>
+          <div>
+            <CardArea>
+              <EventCardArea />
+              <ItemCardArea />
+            </CardArea>
+          </div>
+        </Layout>
+      </div>
     </>
   );
 };
