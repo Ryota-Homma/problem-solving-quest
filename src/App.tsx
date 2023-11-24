@@ -17,19 +17,16 @@ const App: React.FC = () => {
 
   return (
     <>
-      <p>
-        <div>
-          <BgImage />
-        </div>
-        <Layout>
-          <Title />
-          <TopArea />
-          <CardArea>
-            <EventCardArea />
-            <ItemCardArea />
-          </CardArea>
-        </Layout>
-      </p>
+      <BgImage />
+
+      <Layout>
+        <Title />
+        <TopArea />
+        <CardArea>
+          <EventCardArea />
+          <ItemCardArea />
+        </CardArea>
+      </Layout>
     </>
   );
 };
