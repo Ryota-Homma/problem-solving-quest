@@ -1,4 +1,4 @@
-import {useLayoutEffect} from "react";
+import { useLayoutEffect } from "react";
 import BgImage from "./components/bgImage/BgImage";
 import Title from "./components/title/Title";
 import Layout from "./components/layout/Layout";
@@ -17,23 +17,19 @@ const App: React.FC = () => {
 
   return (
     <>
-      {/* <BgImage />
-
-      <Layout>
-        <Title />
-        <TopArea />
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <CardArea>
-          <EventCardArea />
-          <ItemCardArea />
-        </CardArea>
-      </Layout> */}
+      <p>
+        <div>
+          <BgImage />
+        </div>
+        <Layout>
+          <Title />
+          <TopArea />
+          <CardArea>
+            <EventCardArea />
+            <ItemCardArea />
+          </CardArea>
+        </Layout>
+      </p>
     </>
   );
 };
