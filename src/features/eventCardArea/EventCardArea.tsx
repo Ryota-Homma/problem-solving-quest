@@ -4,7 +4,7 @@ import useEventCard from "../../hooks/useEventCard";
 import s from "./EventCardArea.module.scss";
 
 const EventCardArea = () => {
-  const [displayedCards, {cardRef, shuffle}] = useEventCard();
+  const {displayedCards, cardRef, shuffle} = useEventCard();
 
   return (
     <>

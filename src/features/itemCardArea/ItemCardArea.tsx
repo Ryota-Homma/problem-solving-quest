@@ -4,12 +4,12 @@ import useItemCard from "../../hooks/useItemCard";
 import s from "./ItemCardArea.module.scss";
 
 const ItemCardArea: React.FC = () => {
-  const [displayedItems, {cardRef, deleteItem, shuffle}] = useItemCard();
+  const {displayedCards, cardRef, deleteItem, shuffle} = useItemCard();
 
   return (
     <>
       <div className={s["wrap"]}>
-        {displayedItems.map((item, index) => (
+        {displayedCards.map((item, index) => (
           <ItemCard
             key={item.item}
             item={item.item}

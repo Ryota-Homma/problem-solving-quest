@@ -8,12 +8,13 @@ type EventCardState = {
   situation: string;
 };
 
-type CardRef = {
+type UseEventCard = {
+  displayedCards: EventCardState[];
   cardRef: React.RefObject<HTMLDivElement>;
   shuffle: () => void;
 };
 
-const useEventCard = (): [EventCardState[], CardRef] => {
+const useEventCard = (): UseEventCard => {
   const [deck, setDeck] = useState<EventCardState[]>(events);
   const [displayedCards, setDisplayedCards] = useState<EventCardState[] | []>([]);
 
@@ -30,7 +31,7 @@ const useEventCard = (): [EventCardState[], CardRef] => {
     setDisplayedCards(shuffledCard);
   }, [deck]);
 
-  return [displayedCards, {cardRef, shuffle}];
+  return {displayedCards, cardRef, shuffle};
 };
 
 export default useEventCard;

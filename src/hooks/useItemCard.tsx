@@ -8,13 +8,14 @@ type DisplayedItems = {
   img: string;
 };
 
-type CardRef = {
+type UseItemCard = {
+  displayedCards: DisplayedItems[];
   cardRef: MutableRefObject<RefObject<HTMLInputElement>[]>;
   deleteItem: (index: number) => void;
   shuffle: () => void;
 };
 
-const useItemCard = (): [DisplayedItems[], CardRef] => {
+const useItemCard = (): UseItemCard => {
   const [deck, setDeck] = useState<DisplayedItems[]>(items);
   const [displayedCards, setDisplayedCards] = useState<DisplayedItems[] | []>([]);
 
@@ -54,7 +55,7 @@ const useItemCard = (): [DisplayedItems[], CardRef] => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return [displayedCards, {cardRef, deleteItem, shuffle}];
+  return {displayedCards, cardRef, deleteItem, shuffle};
 };
 
 export default useItemCard;
