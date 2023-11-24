@@ -22,6 +22,13 @@ const App: React.FC = () => {
       <Layout>
         <Title />
         <TopArea />
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
         <CardArea>
           <EventCardArea />
           <ItemCardArea />
