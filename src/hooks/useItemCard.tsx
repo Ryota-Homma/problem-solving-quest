@@ -23,7 +23,7 @@ const useItemCard = (): UseItemCard => {
     const RemainingDeck = differenceBy(deck, displayedCards, "item");
     const newCard = sampleSize(RemainingDeck, 1);
     const newDeck = differenceBy(RemainingDeck, newCard, "item");
-    if (!RemainingDeck.length) return alert("アイテムがなくなりました");
+    if (!RemainingDeck.length) return;
     displayedCards[index] = newCard[0];
     setDisplayedCards(displayedCards);
     setDeck(newDeck);
@@ -33,7 +33,21 @@ const useItemCard = (): UseItemCard => {
     const RemainingDeck = differenceBy(deck, displayedCards, "item");
     const newCard = sampleSize(RemainingDeck, 3);
     const newDeck = differenceBy(RemainingDeck, newCard, "item");
-    if (RemainingDeck.length === 0) return alert("アイテムがなくなりました");
+    if (RemainingDeck.length === 0) {
+      confirm("アイテムカードがなくなりました。もう一度シャッフルしますか？");
+      cardRef.current.forEach((card) => {
+        if (!card.current!.classList.contains("active")) {
+          card.current!.classList.add("active");
+        }
+        card.current!.addEventListener("animationend", () => {
+          const resetDeck = differenceBy(items, displayedCards, "item");
+          const resetDisplayedCards = sampleSize(resetDeck, 3);
+          setDeck(resetDeck);
+          return setDisplayedCards(resetDisplayedCards);
+        });
+      });
+      return;
+    }
     cardRef.current.forEach((card, index) => {
       card.current!.classList.add("active");
       if (!newCard[index]) return newCard.push(displayedCards[index]);
