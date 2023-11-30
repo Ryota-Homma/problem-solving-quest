@@ -19,10 +19,30 @@ const useItemCard = (): UseItemCard => {
   const [deck, setDeck] = useState<DisplayedItems[]>(items);
   const [displayedCards, setDisplayedCards] = useState<DisplayedItems[] | []>([]);
 
-  const deleteItem = (index: number) => {
-    const RemainingDeck = differenceBy(deck, displayedCards, "item");
-    const newCard = sampleSize(RemainingDeck, 1);
+  const calculateDeck = (
+    displayed: DisplayedItems[],
+    deck: DisplayedItems[],
+    num: number
+  ) => {
+    const RemainingDeck = differenceBy(deck, displayed, "item");
+    const newCard = sampleSize(RemainingDeck, num);
     const newDeck = differenceBy(RemainingDeck, newCard, "item");
+    return {RemainingDeck, newCard, newDeck};
+  };
+
+  const handleAnimationEnd = (
+    card: RefObject<HTMLInputElement>,
+    newCard: DisplayedItems[],
+    newDeck: DisplayedItems[]
+  ) => {
+    card.current!.addEventListener("animationend", () => {
+      setDisplayedCards(newCard);
+      setDeck(newDeck);
+    });
+  };
+
+  const deleteItem = (index: number) => {
+    const {RemainingDeck, newCard, newDeck} = calculateDeck(displayedCards, deck, 1);
     if (!RemainingDeck.length) return;
     displayedCards[index] = newCard[0];
     setDisplayedCards(displayedCards);
@@ -30,9 +50,7 @@ const useItemCard = (): UseItemCard => {
   };
 
   const shuffle = () => {
-    const RemainingDeck = differenceBy(deck, displayedCards, "item");
-    const newCard = sampleSize(RemainingDeck, 3);
-    const newDeck = differenceBy(RemainingDeck, newCard, "item");
+    const {RemainingDeck, newCard, newDeck} = calculateDeck(displayedCards, deck, 3);
     if (RemainingDeck.length === 0) {
       confirm("アイテムカードがなくなりました。もう一度シャッフルしますか？");
       cardRef.current.forEach((card) => {
@@ -51,10 +69,7 @@ const useItemCard = (): UseItemCard => {
     cardRef.current.forEach((card, index) => {
       card.current!.classList.add("active");
       if (!newCard[index]) return newCard.push(displayedCards[index]);
-      card.current!.addEventListener("animationend", () => {
-        setDisplayedCards(newCard);
-        setDeck(newDeck);
-      });
+      handleAnimationEnd(card, newCard, newDeck);
     });
   };
 
