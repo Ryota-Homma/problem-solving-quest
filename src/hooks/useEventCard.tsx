@@ -21,8 +21,14 @@ const useEventCard = (): UseEventCard => {
   const cardRef = useRef<HTMLDivElement>(null);
   const shuffle = () => {
     const newDeck = differenceBy(deck, displayedCards, "situation");
-    if (!newDeck.length) return alert("イベントカードがなくなりました");
-    if (cardRef.current!) cardRef.current.classList.add("active");
+    if (!cardRef.current) return;
+    if (!newDeck.length) {
+      confirm("イベントカードがなくなりました。もう一度シャッフルしますか？");
+      cardRef.current.classList.add("active");
+      const resetDeck = differenceBy(events, displayedCards, "situation");
+      return cardRef.current!.addEventListener("animationend", () => setDeck(resetDeck));
+    }
+    cardRef.current.classList.add("active");
     cardRef.current!.addEventListener("animationend", () => setDeck(newDeck));
   };
 
