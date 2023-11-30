@@ -41,6 +41,24 @@ const useItemCard = (): UseItemCard => {
     });
   };
 
+  const handleShuffle = () => {
+    const resetDeck = differenceBy(items, displayedCards, "item");
+    const resetDisplayedCards = sampleSize(resetDeck, 3);
+    setDeck(resetDeck);
+    return setDisplayedCards(resetDisplayedCards);
+  };
+
+  // activeクラスを持つ要素の数を数える refで配列の中のクラスを数えられないため
+  const countElementsWithClass = (
+    refs: MutableRefObject<RefObject<HTMLInputElement>[]>,
+    className: string
+  ) => {
+    return refs.current.reduce((count: number, ref: RefObject<HTMLInputElement>) => {
+      if (!ref.current) return count;
+      return count + Number(Array.from(ref.current.classList).includes(className));
+    }, 0);
+  };
+
   const deleteItem = (index: number) => {
     const {RemainingDeck, newCard, newDeck} = calculateDeck(displayedCards, deck, 1);
     if (!RemainingDeck.length) return;
@@ -52,17 +70,17 @@ const useItemCard = (): UseItemCard => {
   const shuffle = () => {
     const {RemainingDeck, newCard, newDeck} = calculateDeck(displayedCards, deck, 3);
     if (RemainingDeck.length === 0) {
-      confirm("アイテムカードがなくなりました。もう一度シャッフルしますか？");
+      const confirmResult = confirm(
+        "アイテムカードがなくなりました。もう一度シャッフルしますか？"
+      );
+      if (!confirmResult) return;
+      const result = countElementsWithClass(cardRef, "active");
+      if (Number(result) === 3) return handleShuffle();
+
       cardRef.current.forEach((card) => {
-        if (!card.current!.classList.contains("active")) {
+        if (!card.current!.classList.contains("active"))
           card.current!.classList.add("active");
-        }
-        card.current!.addEventListener("animationend", () => {
-          const resetDeck = differenceBy(items, displayedCards, "item");
-          const resetDisplayedCards = sampleSize(resetDeck, 3);
-          setDeck(resetDeck);
-          return setDisplayedCards(resetDisplayedCards);
-        });
+        card.current!.addEventListener("animationend", () => handleShuffle());
       });
       return;
     }
