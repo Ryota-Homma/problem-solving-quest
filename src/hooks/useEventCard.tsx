@@ -28,7 +28,10 @@ const useEventCard = (): UseEventCard => {
     const newDeck = differenceBy(deck, [displayedCard], "situation");
     if (!cardRef.current) return;
     if (!newDeck.length) {
-      confirm("イベントカードがなくなりました。もう一度シャッフルしますか？");
+      const confirmResult = confirm(
+        "イベントカードがなくなりました。もう一度シャッフルしますか？"
+      );
+      if (!confirmResult) return;
       cardRef.current.classList.add("active");
       const resetDeck = differenceBy(events, [displayedCard], "situation");
       return cardRef.current!.addEventListener("animationend", () => setDeck(resetDeck));
